@@ -54,7 +54,7 @@ public class UIEmail extends VerticalLayout {
 
             Mail email = new Mail(fromE, subjE, toE, bodyE);
 
-            String apiKey = "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";
+            String apiKey = "";
 
             SendGrid sendg = new SendGrid(apiKey);
             Request request = new Request();
