@@ -54,35 +54,28 @@ public class UIEmail extends VerticalLayout {
 
             Mail email = new Mail(fromE, subjE, toE, bodyE);
 
-            String apiKey = "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";
+            String apiKey = "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";
 
             SendGrid sendg = new SendGrid(apiKey);
             Request request = new Request();
 
-            request.method = Method.POST;
-            request.endpoint = "mail/send";
-
             try {
+                request.method = Method.POST;
+                request.endpoint = "mail/send";
                 request.body = email.build();
-            } catch (IOException e) {
-                e.printStackTrace();
+                Response response = sendg.api(request);
+
+                System.out.println(response.statusCode);
+                System.out.println(response.body);
+                System.out.println(response.headers);
+
+                to.setValue("");
+                subj.setValue("");
+                body.setValue("");
+
+            } catch (IOException ex) {
+                ex.printStackTrace();
             }
-
-            Response response = null;
-            try {
-                response = sendg.api(request);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println(response.statusCode);
-            System.out.println(response.body);
-            System.out.println(response.headers);
-
-            to.setValue("");
-            subj.setValue("");
-            body.setValue("");
-
         });
 
         canc.addClickListener((evento) -> {

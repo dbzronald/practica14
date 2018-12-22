@@ -95,19 +95,12 @@ public class UIMain extends VerticalLayout {
             vUser.addClickListener((evento) -> getUI().get().navigate("usuario"));
             geren.addClickListener((evento) -> getUI().get().navigate("gerentes"));
 
-            eventService.crearEvento(
-                    1,
-                    Date.from(LocalDate.now().atStartOfDay(ZoneId.systemDefault()).toInstant()),
-                    "Practica 14",
-                    CalendarItemTheme.Green
-            );
-
             calendario.setDataProvider(new CustomDataProvider());
 
             calendario.addEventClickListener(evt -> {
                 try {
-                    modifyEvent.fecha.setValue(evt.getDetail().getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-                    modifyEvent.titulo.setValue(evt.getDetail().getTitle());
+                    modifyEvent.date.setValue(evt.getDetail().getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                    modifyEvent.titl.setValue(evt.getDetail().getTitle());
 
                     uDialog(modifyEvent);
 
