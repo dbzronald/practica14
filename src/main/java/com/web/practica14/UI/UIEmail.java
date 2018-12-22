@@ -46,7 +46,7 @@ public class UIEmail extends VerticalLayout {
 
         send.addClickListener((evento) -> {
 
-            Email fromE = new Email("test@example.com");
+            Email fromE = new Email("vaadin@practica14.com");
             Email toE = new Email(to.getValue());
 
             String subjE = to.getValue();
